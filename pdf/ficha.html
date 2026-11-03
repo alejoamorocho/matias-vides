@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Matías Vides, ficha SoccerMax</title>
+    <link rel="stylesheet" href="../node_modules/@fontsource-variable/big-shoulders-display/index.css" />
+    <link rel="stylesheet" href="../node_modules/@fontsource-variable/onest/index.css" />
+    <style>
+      @page {
+        size: A4;
+        margin: 0;
+      }
+      :root {
+        --navy: #07193c;
+        --abyss: #040e24;
+        --gold: #b79366;
+        --gold-lite: #dcc39d;
+        --chalk: #eef2f6;
+        --display: 'Big Shoulders Display Variable', sans-serif;
+        --text: 'Onest Variable', sans-serif;
+      }
+      * {
+        box-sizing: border-box;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      html,
+      body {
+        margin: 0;
+        background: var(--navy);
+      }
+      .page {
+        width: 210mm;
+        height: 297mm;
+        position: relative;
+        overflow: hidden;
+        background: var(--navy);
+        color: var(--chalk);
+        font-family: var(--text);
+      }
+
+      .photo {
+        position: absolute;
+        inset: 0 0 auto 0;
+        height: 160mm;
+      }
+      .photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 62% 30%;
+      }
+      .photo::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(180deg, rgb(4 14 36 / 0.55) 0%, rgb(4 14 36 / 0) 22%, rgb(7 25 60 / 0) 55%, var(--navy) 98%),
+          linear-gradient(90deg, rgb(7 25 60 / 0.75) 0%, rgb(7 25 60 / 0) 55%);
+      }
+
+      .logo {
+        position: absolute;
+        top: 12mm;
+        left: 14mm;
+        width: 34mm;
+        z-index: 2;
+      }
+      .cat {
+        position: absolute;
+        top: 13mm;
+        right: 14mm;
+        z-index: 2;
+        text-align: right;
+        font-size: 9pt;
+        line-height: 1.35;
+        color: rgb(238 242 246 / 0.85);
+      }
+      .cat b {
+        display: block;
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 26pt;
+        line-height: 1;
+        color: var(--gold-lite);
+      }
+
+      .name {
+        position: absolute;
+        z-index: 2;
+        left: 14mm;
+        top: 98mm;
+      }
+      .name h1 {
+        margin: 0;
+        font-family: var(--display);
+        font-weight: 900;
+        font-size: 74pt;
+        line-height: 0.82;
+        letter-spacing: -0.005em;
+      }
+      .name p {
+        display: inline-block;
+        margin: 4mm 0 0;
+        padding: 2.2mm 4mm 2.4mm 3.4mm;
+        border-left: 1.2mm solid var(--gold);
+        background: var(--abyss);
+        font-size: 10.5pt;
+        line-height: 1.3;
+        color: var(--chalk);
+      }
+      .name p b {
+        font-weight: 600;
+        color: var(--gold-lite);
+      }
+
+      .body {
+        position: absolute;
+        left: 14mm;
+        right: 14mm;
+        top: 164mm;
+        display: grid;
+        grid-template-columns: 1.15fr 1fr 0.9fr;
+        gap: 8mm;
+      }
+      h2 {
+        margin: 0 0 3.5mm;
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 15pt;
+        color: var(--gold-lite);
+        border-bottom: 0.3mm solid rgb(183 147 102 / 0.55);
+        padding-bottom: 1.6mm;
+      }
+      dl {
+        margin: 0;
+      }
+      dl div {
+        padding: 1.3mm 0;
+        border-bottom: 0.2mm solid rgb(238 242 246 / 0.12);
+      }
+      dt {
+        font-size: 7.5pt;
+        color: rgb(238 242 246 / 0.6);
+      }
+      dd {
+        margin: 0.4mm 0 0;
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 12pt;
+        line-height: 1.1;
+      }
+
+      ol {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        counter-reset: s;
+        position: relative;
+      }
+      ol::before {
+        content: '';
+        position: absolute;
+        left: 2.6mm;
+        top: 3mm;
+        bottom: 5mm;
+        width: 0.25mm;
+        background: rgb(238 242 246 / 0.25);
+      }
+      ol li {
+        counter-increment: s;
+        position: relative;
+        padding: 0 0 3.4mm 9mm;
+      }
+      ol li::before {
+        content: counter(s);
+        position: absolute;
+        left: 0;
+        top: 0.3mm;
+        width: 5.4mm;
+        height: 5.4mm;
+        border-radius: 50%;
+        background: var(--gold);
+        color: var(--navy);
+        font-size: 7pt;
+        font-weight: 700;
+        display: grid;
+        place-items: center;
+      }
+      ol .club {
+        display: block;
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: 13pt;
+        line-height: 1.05;
+      }
+      ol .where {
+        font-size: 8pt;
+        color: rgb(238 242 246 / 0.65);
+      }
+
+      .pitch svg {
+        width: auto;
+        max-width: 100%;
+        height: 38mm !important;
+        height: auto;
+        display: block;
+        color: var(--chalk);
+      }
+      .pitch .lines {
+        opacity: 0.35;
+      }
+      .pitch .zone {
+        fill: var(--gold);
+        opacity: 0.22;
+      }
+      .pitch .run {
+        fill: none;
+        stroke: var(--gold-lite);
+        stroke-width: 4;
+        stroke-linecap: round;
+      }
+      .pitch .run-r {
+        stroke: var(--chalk);
+      }
+      .pitch .shot {
+        stroke-width: 3;
+        stroke-dasharray: 7 8;
+      }
+      .pitch p {
+        margin: 1.8mm 0 0;
+        font-size: 7.5pt;
+        line-height: 1.4;
+        color: rgb(238 242 246 / 0.75);
+      }
+      .pitch p b {
+        color: var(--chalk);
+      }
+
+      .media {
+        position: absolute;
+        left: 14mm;
+        right: 14mm;
+        bottom: 27mm;
+        height: 27mm;
+        display: grid;
+        grid-template-columns: 27mm 1fr auto;
+        gap: 6mm;
+        align-items: center;
+        padding: 0 6mm 0 0;
+        background: rgb(238 242 246 / 0.06);
+        border: 0.3mm solid rgb(183 147 102 / 0.55);
+        border-radius: 2mm;
+        overflow: hidden;
+      }
+      .media .qr {
+        display: block;
+        height: 100%;
+        background: var(--chalk);
+        padding: 3mm;
+      }
+      .media .qr img {
+        width: 100%;
+        height: 100%;
+        display: block;
+      }
+      .media h3 {
+        margin: 0 0 1.4mm;
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 16pt;
+        line-height: 1;
+      }
+      .media p {
+        margin: 0;
+        font-size: 8.5pt;
+        color: rgb(238 242 246 / 0.75);
+      }
+      .media .url {
+        display: inline-block;
+        margin-top: 1.6mm;
+        font-size: 9.5pt;
+        color: var(--gold-lite);
+        text-decoration: underline;
+        text-underline-offset: 0.8mm;
+      }
+      .media .go {
+        display: inline-block;
+        background: var(--gold);
+        color: var(--navy);
+        font-weight: 700;
+        font-size: 10pt;
+        text-decoration: none;
+        padding: 3mm 6mm;
+        border-radius: 10mm;
+        white-space: nowrap;
+      }
+      .foot {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 22mm;
+        background: var(--abyss);
+        border-top: 0.6mm solid var(--gold);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 14mm;
+        font-size: 9pt;
+      }
+      .foot .rep {
+        color: rgb(238 242 246 / 0.6);
+        font-size: 7.5pt;
+        margin-bottom: 0.6mm;
+      }
+      .foot .who {
+        font-family: var(--display);
+        font-weight: 800;
+        font-size: 15pt;
+        line-height: 1;
+      }
+      .foot ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        gap: 7mm;
+      }
+      .foot a {
+        color: var(--chalk);
+        text-decoration: none;
+      }
+      .foot li span {
+        display: block;
+        font-size: 7pt;
+        color: var(--gold-lite);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="photo"><img src="../public/img/matias.jpg" alt="" /></div>
+      <img class="logo" src="../public/img/soccermax-light.png" alt="SoccerMax" />
+      <div class="cat"><b>2012</b>categoría</div>
+
+      <div class="name">
+        <h1>Matías<br />Vides</h1>
+        <p><b>Matías Román Vides Fuentes</b><br />Extremo por ambos perfiles, pierna hábil derecha</p>
+      </div>
+
+      <section class="body">
+        <div>
+          <h2>Datos</h2>
+          <dl>
+            <div><dt>Nacimiento</dt><dd>12 de agosto de 2012</dd></div>
+            <div><dt>Lugar de nacimiento</dt><dd>Mompox, Bolívar</dd></div>
+            <div><dt>Posición</dt><dd>Extremo, banda izquierda y derecha</dd></div>
+            <div><dt>Pierna hábil</dt><dd>Derecha</dd></div>
+            <div><dt>Equipo actual</dt><dd>Selección Valle</dd></div>
+          </dl>
+        </div>
+
+        <div>
+          <h2>Trayectoria</h2>
+          <ol>
+            <li><span class="club">Nilmar Garra Guajira</span><span class="where">La Guajira</span></li>
+            <li><span class="club">Cifuentes FC</span><span class="where">Ibagué, Tolima</span></li>
+            <li><span class="club">Escuela Sarmiento Lora</span><span class="where">Cali, Valle del Cauca</span></li>
+            <li><span class="club">Selección Valle</span><span class="where">2025–2026</span></li>
+          </ol>
+        </div>
+
+        <div class="pitch">
+          <h2>Zonas</h2>
+          <svg viewBox="0 0 340 470" aria-hidden="true">
+            <defs>
+              <marker id="tl" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#dcc39d" /></marker>
+              <marker id="tr" viewBox="0 0 10 10" refX="7" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#eef2f6" /></marker>
+            </defs>
+            <g class="lines" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="10" y="10" width="320" height="450" />
+              <line x1="10" y1="235" x2="330" y2="235" />
+              <circle cx="170" cy="235" r="40" />
+              <rect x="80" y="10" width="180" height="72" />
+              <rect x="128" y="10" width="84" height="26" />
+              <path d="M134 82 A40 40 0 0 0 206 82" />
+              <rect x="80" y="388" width="180" height="72" />
+              <rect x="128" y="434" width="84" height="26" />
+            </g>
+            <rect class="zone" x="10" y="40" width="62" height="300" />
+            <rect class="zone" x="268" y="40" width="62" height="300" />
+            <path class="run" d="M40 330 C 38 250, 40 190, 52 150 S 100 104, 138 92" marker-end="url(#tl)" />
+            <path class="run shot" d="M142 90 L 166 20" marker-end="url(#tl)" />
+            <path class="run run-r" d="M300 330 C 302 250, 304 150, 306 40" marker-end="url(#tr)" />
+            <path class="run run-r shot" d="M300 38 C 260 30, 220 40, 186 58" marker-end="url(#tr)" />
+          </svg>
+          <p><b>Izquierda:</b> pierna cambiada, entra hacia el centro.</p>
+          <p><b>Derecha:</b> pierna natural, desborda y centra.</p>
+        </div>
+      </section>
+
+      <section class="media">
+        <a class="qr" href="https://alejoamorocho.github.io/matias-vides/#jugadas"><img src="qr-jugadas.svg" alt="Código QR al video de jugadas" /></a>
+        <div>
+          <h3>Video de jugadas y perfil web</h3>
+          <p>Escanea el código o haz clic en el enlace. El perfil incluye el video completo y esta ficha.</p>
+          <a class="url" href="https://alejoamorocho.github.io/matias-vides/">alejoamorocho.github.io/matias-vides</a>
+        </div>
+        <a class="go" href="https://alejoamorocho.github.io/matias-vides/#jugadas">Ver jugadas, 1:46</a>
+      </section>
+
+      <footer class="foot">
+        <div>
+          <div class="rep">Representación</div>
+          <div class="who">SoccerMax</div>
+        </div>
+        <ul>
+          <li><span>Correo</span><a href="mailto:info@soccermax.co">info@soccermax.co</a></li>
+          <li><span>WhatsApp</span><a href="https://wa.me/573185072722">+57 318 507 2722</a></li>
+          <li><span>Web</span><a href="https://soccermax.co/">soccermax.co</a></li>
+        </ul>
+      </footer>
+    </div>
+  </body>
+</html>
