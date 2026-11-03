@@ -684,11 +684,15 @@ h2 {
     font-size: 30vw;
     top: 96px;
   }
+  /* anclado arriba: la cabeza (13% del png es aire) queda siempre bajo la barra,
+     y la altura cede en pantallas bajas para no pisar los datos */
   .hero-cut {
-    height: auto;
-    width: 172vw;
+    --cut-h: min(171vw, calc(max(100svh, 640px) - 236px));
+    height: var(--cut-h);
+    width: auto;
     right: -9vw;
-    bottom: 19vh;
+    top: calc(68px - var(--cut-h) * 0.128);
+    bottom: auto;
   }
   .hero-shadow {
     width: 80vw;
